@@ -1,4 +1,20 @@
-.headerlogo {
+#toolbar {
     max-width: 100%;
-    height: auto;
+    height: 40px;
+	background-color: #1976d2;
+	color: white;
+	padding: 0 5px 0 5px;
+
+	#toolbar-wrapper {
+		max-width: 800px;
+		width: 100%;
+
+		.toolbar-content {
+			min-width: 200px;
+		}
+
+		#user {
+			text-align: right;
+		}
+	}
 }
