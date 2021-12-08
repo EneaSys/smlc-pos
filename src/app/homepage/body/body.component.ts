@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/modules/main/auth.service';
+import { LCHService } from 'src/app/modules/main/live-chat-helper.service';
 import { PaymentService } from 'src/app/modules/main/payment.service';
 
 @Component({
@@ -12,11 +13,28 @@ export class BodyComponent implements OnInit {
 	constructor(
 		private authService: AuthService,
 		private paymentService: PaymentService,
+		private LCHService: LCHService,
 	) { }
 
 	//public settings = new ScanSettings({ enabledSymbologies: [Barcode.Symbology.CODE128] });
 
-	ngOnInit(): void { }
+	ngOnInit(): void {
+		this.loadLivechat();
+	}
+
+	async loadLivechat() {
+		let esercente: any = await this.authService.getUser();
+
+		switch (esercente.context) {
+			case "smlc":
+					this.LCHService.lauch("//supp.eneasys.com/smlc/index.php/ita/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(top)/350/(units)/pixels/(leaveamessage)/true/(department)/2", esercente);
+				break;
+			default:
+				console.log("NO LIVECHAT");
+				break;
+		}
+		
+	}
 
 	scanning = false;
 	activateScanner() {
@@ -73,14 +91,14 @@ export class BodyComponent implements OnInit {
 		try {
 			let esercente = await this.authService.getUser();
 			let paymentRequest: any = {
-				code: this.cf,
-				pin: this.pin,
+				cardCode: this.cf,
+				cardPin: this.pin,
 				amount: this.amount,
-				wallet_id: esercente.walletId,
+				walletReceiver: esercente.walletId,
 			}
 			this.pin = undefined;
 
-			this.res = await this.paymentService.createTransaction(esercente.aigJwt, paymentRequest).toPromise();
+			this.res = await this.paymentService.createTransaction(paymentRequest);
 
 			this.paymentOk = true;
 		} catch(e) {
@@ -93,4 +111,5 @@ export class BodyComponent implements OnInit {
 	reload() {
 		window.location.href = "/";
 	}
+
 }
