@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 })
 export class PaymentService {
 
-	transactionApiEndpoint = "https://api-gest.stage.eneasys.net/wallet/";
+	transactionApiEndpoint = "https://api-gest.eneasys.net/wallet/";
 
 	constructor(
 		private http: HttpClient,

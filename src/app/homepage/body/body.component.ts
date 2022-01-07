@@ -86,6 +86,7 @@ export class BodyComponent implements OnInit {
 	res: any;
 	paymentOk: boolean = false;
 	paymentKo: boolean = false;
+	errore: string;
 	async proceedToPayment() {
 		this.paymentInProgress = true;
 		try {
@@ -101,9 +102,18 @@ export class BodyComponent implements OnInit {
 			this.res = await this.paymentService.createTransaction(paymentRequest);
 
 			this.paymentOk = true;
-		} catch(e) {
-			console.log(e);
-			this.res = e;
+		} catch(e: any) {
+			if(e.error.detail.includes("A CreditCard With Code: ")) {
+				this.errore = "Richiedente non beneficiario";
+			}
+			if(e.error.detail == "Not enough amount for this transaction.") {
+				this.errore = "Credito insufficiente";
+			}
+			if(e.error.detail.includes("The Pin Of CreditCard With Code:")) {
+				this.errore = "PIN errato";
+			}
+			
+			this.res = e.error;
 			this.paymentKo = true;
 		}
 	}

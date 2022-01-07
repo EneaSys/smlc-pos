@@ -1,11 +1,12 @@
 <div id="toolbar" fxLayout="row" fxLayoutAlign="center">
     <div id="toolbar-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
-		<div class="toolbar-content" id="logo">
-			POS
+		<div class="toolbar-content" id="logo" [ngSwitch]="page">
+			<span *ngSwitchCase="2" (click)="showPage('1')">POS</span>
+			<span *ngSwitchDefault (click)="showPage('2')">Mostra credito</span>
 		</div>
 		<div class="toolbar-content" id="user" *ngIf="user">
 			{{ user.name }} |
-			<a href="/logout.php">logout</a>
+			<a href="/user/logout.php">logout</a>
 		</div>
 	</div>
 </div>

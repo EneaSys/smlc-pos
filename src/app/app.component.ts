@@ -7,10 +7,9 @@ import { AuthService } from './modules/main/auth.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	constructor(
-		
-	) { }
+	constructor() { }
 
 	title = 'smlc-pos';
-	
+	_page: string = '1';
+
 }

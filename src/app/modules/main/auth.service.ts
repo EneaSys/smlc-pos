@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-	loginApiEndpoint = "https://smlc.eneasys.com/api/?";
+	loginApiEndpoint = "/api/?";
 
 	constructor(
 		private http: HttpClient,
@@ -24,7 +24,7 @@ export class AuthService {
 		} catch (e: any) {
 			console.log(e.error);
 			if(e.error.code == 401) {
-				window.location.href = "https://smlc.eneasys.com/";
+				window.location.href = "https://bs.stepo.biz/";
 			}
 		}
 	}

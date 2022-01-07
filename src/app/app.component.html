@@ -1,5 +1,8 @@
 <div class="toolbar" role="banner">
-  <header></header>  
+  <header [(page)]="_page"></header>  
 </div>
 
-<body></body>
+<ng-container [ngSwitch]="_page">
+	<balance *ngSwitchCase="2">balance</balance>
+	<body *ngSwitchDefault></body>
+</ng-container>

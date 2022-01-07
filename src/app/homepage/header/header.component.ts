@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/main/auth.service';
 
@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
 		
 	) { }
 
+	@Input() page: string;
+
+	@Output() pageChange = new EventEmitter<string>();
+
 
 	ngOnInit(): void {
 		this.loadUser();
@@ -30,6 +34,10 @@ export class HeaderComponent implements OnInit {
 				//window.location.href = "https://smlc.eneasys.com/";
 			}
 		}
+	}
+
+	showPage(page: string) {
+		this.pageChange.emit(page);
 	}
 
 }

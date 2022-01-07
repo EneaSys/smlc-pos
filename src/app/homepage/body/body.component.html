@@ -1,3 +1,7 @@
+<div fxLayout="column" fxLayoutAlign="space-evenly center">
+	<h3 style="color: red;">ATTENZIONE IL SISTEMA SARA' IN MANUTENZIONE DALLE ORE 20:30 DEL 07/01/2022 ALLE ORE 08:00 DEL 08/01/2022!</h3>
+</div>
+
 <div fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="!paymentOk && !paymentKo">
 	<!--        
 	<scandit-sdk-barcode-picker
@@ -7,7 +11,7 @@
 		></scandit-sdk-barcode-picker>
 	-->
 	<scandit-barcode-picker class="wrapped" *ngIf="scanning" (scan)="scanComplete($event)"
-		configure.licenseKey="AWvAvgFWICbOHM7G6AAjOZo2+u5sIIwqzxYg49lSraD+U3qVfFLV3t9+xQ+6Q8ueJUABm91oQ1UhZyqSuFjYlwh9FiJvSlosClW3Qc10EiR0eaHhZ3d5OVdOFxvXYZTM+U9EElhJNwq1U/ChME5+JnYnZg8kBAS4OgR7nYoyqsRr7FygfDif2Okfu1xxx5Y4oV1kq7gB5VjZENMBBYLxuv1PSYU+MTwBxbgqsfpcqBipjtFj/4Z3vmzTVyuySkqdnvpFsDGU1rWLwKAcRd3AiIPpI7+1qjQDHbHC7UtpHmYQ2IDFWaL0GXFctu8Qq0M/UWvN0yOPJWhemEG5Xwj308sFq8L3QRCrpV6ssKPLV8ZFj9jhmg3S//0AynhQC5SeWfj0RW/zyygh1p9/1SqakEUKYarwYPN44yCFjogotM/j+feOJ35FS7mEEq3e1hhrthvCpcPSgirVnEv3hsoMwRUA30iU6uX5qWv4c7ODHpMuGcaGOCv6zd9Xr+M9asMOUGRMpM+bcoTrdGOY98JvMrmyA+Vrc+6DSmssJQVdxammHDwyHnWNxyHj81I4hXGud/TJoFz2lg5KiReCPXl9YKctM0PJu06OfbQQAyHPDvNthCZOIC8kF/besif+654y6PqJ0pifsuWdfKlI99SbZpjmIDhMp1w845QDVkK2S/JTjiLvQE1pKqHiRtrzLf3DR0/c2GtMvkZximVkYNE0sS+gl04XYz+xCI5tv7lkV6XmBL1GMDAOEdKqsVx9P8SR6zZ3oTH65+gCyEWfmHRyzBwiYUurDdXgz64bN2AWB4Sd4ARlx4SWs6y95d4adNHROtvT8rbR/oQrP9kiXMiC9Q=="
+		configure.licenseKey="AbwQXBdzNo8xLhGzWTFChC4x3h3gN0BBUEpugt9Zci+3BAFxH05XSSg4KRd1evSFxHTJL2YAKDb+Jwi2MEuSYTgGgAe8bvfJBHEetmBGbBhzU2s1lXlF1j92wrPaVjAWpS5J8cp2Qr1FPcXetShFpC89vnAeLc6i21vHD39XK82Ftjjp2FQpX0kkJkTugvOR3DdxYrWS93Rr11QALl+5Tsq3MGTq85nJi/UPeBpamQ+UUOZZVt8Pb420TsWNxlgaasxDMIOyU4HmPlF3rJkt1cSs+XFi/Mj5/0xKlrhelzTPYEkfmvx9LvNS6m1cNzDmGasrN780G0xwU7FqZBA4r68TeUTbKXjGzkO2vT2X+tsVpzSd6bKAwaQDGdSkyCRojmlSlrZ1eo91ciwyvt8qZy8hY0Tum9eXCVinoQqRF1eDn6R31tqygSZluK3Cv0UWu8Xzd3YJMoAFel4FVuEaJkwSdmc3PKCkayKlElYEJ/pip1sgr7aYDJgoExJEjtrb6P7TpysX1REzVBB4aGqiF52VhJXOg6apEQkcrJLxNSWgux4dHokbG7dQMKb4A7hiFDzzr7WhPgm39vEqVUwBF+FN5yJwZTxOxEY0lW19FEjLhG4F7FJW1L6QKo4fyFwPAyYsUDMkTnNzs6jpPBtoMc9kO1vDCff5uQ81+GVv3AgA/9//gsqWOYHHIalk0xaMjyBaAWIB4GCuiv1cANmoY334jcJUPBB5+6LaGlPYjiHSyTPpPih+dOvdYFRwE/u3NL+hAgk2xzBe6Ip6NydWqyqejhAs7d4A7BRrNKm46Wy0QH90fmXyOU3gxAjEIfnzlFPiUdwRLcI="
 		configure.engineLocation="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/" playSoundOnScan="true"
 		vibrateOnScan="true" scanSettings.enabledSymbologies='["code39"]'></scandit-barcode-picker>
 	
@@ -66,7 +70,8 @@
 	</div>
 
 	<div class="wrapped" fxLayout="column" fxLayoutAlign="center center" *ngIf="paymentKo">
-		<h1 style="color:red">Problemi nel pagamento!!!</h1>
+		<h1>Problemi nel pagamento!!!</h1>
+		<h2 style="color:red">{{ errore }}</h2>
 		<h2>Non è stato scalato alcun importo</h2>
 		<button mat-raised-button fxFlex="50" (click)="reload()">Nuova transazione</button>
 		<hr>
