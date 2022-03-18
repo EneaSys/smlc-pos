@@ -1,19 +1,20 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly center">
 	<br>
+	<h3>Rendicontazioni:</h3>
+	<button mat-stroked-button (click)="summary(1)">10 Dicembre 2021 - 10 Gennaio 2022</button>
+	<button mat-stroked-button (click)="summary(2)">11 Gennaio 2022 - 28 Febbraio 2022</button>
 	<br>
-	<hr>
-	<p>Si informano gli esercenti che le rendicontazioni saranno disponibili dal giorno 10 gennaio 2022.</p>
-	<hr>
 	<br>
-	<button mat-stroked-button (click)="reload()">Ricarica</button>
-	<br>
-	<div class="wrapped" >
+	<div class="wrapped">
 		<h1>{{ balance | currency: 'EUR' }}</h1>
 	</div>
-	<div class="wrapped" >
+	<button mat-stroked-button (click)="reload()">Ricarica</button>
+	<br>
+	<div class="wrapped">
 		<div *ngFor="let transaction of lastTransactions">
-			{{ transaction.creationDateTime | date: 'yyyy-MM-dd HH:mm:ss' }} - 
+			{{ transaction.creationDateTime | date: 'yyyy-MM-dd HH:mm:ss' }} -
 			<span *ngIf="transaction.giveHaves">{{ transaction.giveHaves[0].amount | currency: 'EUR' }}</span>
 		</div>
 	</div>
+
 </div>
