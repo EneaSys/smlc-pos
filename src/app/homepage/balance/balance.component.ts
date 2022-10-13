@@ -51,6 +51,11 @@ export class BalanceComponent implements OnInit {
 			filters.transactionCreationDateTimeLessThanOrEqual = new Date("2022-03-31T23:59:59Z");
 		}
 
+		if (id == 4) {
+			filters.transactionCreationDateTimeGreaterThanOrEqual = new Date("2022-04-01T00:00:00Z");
+			filters.transactionCreationDateTimeLessThanOrEqual = new Date("2022-09-30T23:59:59Z");
+		}
+
 		try {
 			filters.walletIDEquals = this.esercente.walletId;
 			filters.size = 1000;

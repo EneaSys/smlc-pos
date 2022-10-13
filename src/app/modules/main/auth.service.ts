@@ -22,9 +22,8 @@ export class AuthService {
 			this.user = response;
 			this.userLoaded = true;
 		} catch (e: any) {
-			console.log(e.error);
 			if(e.error.code == 401) {
-				window.location.href = "https://bs.stepo.biz/";
+				window.location.href = "https://smlc.eneasys.com/";
 			}
 		}
 	}
